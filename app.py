@@ -6,7 +6,7 @@ from PIL import Image
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 UPLOAD_FOLDER='../tmp/'
-UPLOAD_FOLDER='./uploads/'
+# UPLOAD_FOLDER='./uploads/'
 
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
