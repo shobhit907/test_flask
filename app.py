@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request
 from werkzeug.datastructures import FileStorage
 from werkzeug.utils import secure_filename
-import cv2,os
+import os
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 UPLOAD_FOLDER='../tmp/'
@@ -32,8 +32,9 @@ def image_detail():
             path=os.path.join(app.config['UPLOAD_FOLDER'], filename)
             # print(path)
             file.save(path)
-            img=cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return str(img.shape)
+            # img=cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # return str(img.shape)
+            return filename
         else:
             return "Invalid"
 
