@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import cv2,os
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-UPLOAD_FOLDER='./tmp/'
+UPLOAD_FOLDER='../tmp/'
 
 app=Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
