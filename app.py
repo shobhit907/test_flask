@@ -35,6 +35,7 @@ def image_detail():
             # print(path)
             file.save(path)
             img=Image.open(path)
+            return render_template('imageDetail.html',image_detail=str(img.size))
             return str(img.size)
             return filename
         else:
