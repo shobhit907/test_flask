@@ -1,6 +1,13 @@
 from flask import Flask,render_template,request
+from werkzeug.datastructures import FileStorage
+from werkzeug.utils import secure_filename
+import cv2,os
+
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+UPLOAD_FOLDER='./uploads/'
 
 app=Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def index():
@@ -14,6 +21,24 @@ def welcome_screen():
         name=request.form['username']
     return render_template('welcome.html',username=name)
 
+
+
+@app.route('/image-detail/',methods=["POST"])
+def image_detail():
+    if(request.method=="POST"):
+        file=request.files['image_file']
+        filename=file.filename
+        if(secure_filename(filename) and allowed_file(filename)):
+            path=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            # print(path)
+            file.save(path)
+            img=cv2.imread(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return str(img.shape)
+        else:
+            return "Invalid"
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__=='__main__':
     app.run(debug=True,host="127.0.0.1",port=8000)

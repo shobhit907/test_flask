@@ -9,9 +9,17 @@
     <h1>Welcome to home page</h1>
     <div>
         <form action="/welcome/" method="POST">
-        <input name="username" id="username" type="text">
-        <label for="username">Enter name</label>
-        <input type="submit">
+            <label for="username">Enter name</label>
+            <input name="username" id="username" type="text">
+            <input type="submit">
+        </form>
+    </div>
+    <br><br>
+    <div>
+        <form action="/image-detail/" method="POST" enctype="multipart/form-data">
+            <label for="image_file">Pick image file from your PC</label>
+            <input name="image_file" id="image_file" type="file" formenctype="multipart/form-data">
+            <input type="submit">
         </form>
     </div>
 </body>
