@@ -22,5 +22,13 @@
             <input type="submit">
         </form>
     </div>
+    <br><br>
+    <div>
+        <form action="/predict/" method="POST" enctype="multipart/form-data">
+            <label for="image_digit">Choose digit image to predict</label>
+            <input name="image_digit" id="image_digit" type="file" formenctype="multipart/form-data">
+            <input type="submit">
+        </form>
+    </div>
 </body>
 </html>
